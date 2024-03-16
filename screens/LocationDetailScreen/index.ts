@@ -1,0 +1,1 @@
+export { LocationDetailScreen } from './LocationDetailScreen'
