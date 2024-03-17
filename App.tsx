@@ -1,18 +1,30 @@
 import { StatusBar } from 'expo-status-bar'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { StyleSheet, Text, SafeAreaView } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
-import { Stack } from './navigation'
-import { DashboardScreen } from './screens/DashboardScreen'
-import { LocationDetailScreen } from './screens/LocationDetailScreen'
+import { ScreenRoutes, Stack } from './src/navigation'
+import { DashboardScreen } from './src/screens/DashboardScreen'
+import { LocationDetailScreen } from './src/screens/LocationDetailScreen'
+import { GeoLocationProvider } from './src/context/geoLocation/GeoLocationProvider'
+
+const queryClient = new QueryClient()
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Dashboard" component={DashboardScreen} />
-        <Stack.Screen name="WeatherLocation" component={LocationDetailScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <GeoLocationProvider>
+      <QueryClientProvider client={queryClient}>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name={ScreenRoutes.Dashboard} component={DashboardScreen} />
+            <Stack.Screen
+              name={ScreenRoutes.WeatherLocation}
+              component={LocationDetailScreen}
+              options={{ title: '' }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </QueryClientProvider>
+    </GeoLocationProvider>
   )
 }
 
