@@ -1,11 +1,10 @@
-import { View, Text, StyleSheet, ActivityIndicator, ActivityIndicatorComponent } from 'react-native'
+import { useEffect } from 'react'
+import { View, Text, StyleSheet } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useLocationCurrentWeather } from '@/api/weather'
 import { ScreenRoutes, StackParamList } from '@/navigation'
-import { useEffect } from 'react'
-import { LoadingSkeleton } from '@/components/LoadingSkeleton/LoadingSkeleton'
 import { formatHumidity, formatTemperature, formatWindSpeed, unixTimestampToDateTime } from '@/utils'
-import { DataDetail } from '@/components/DataDetail/DataDetail'
+import { DataDetail } from '@/components/DataDetail/'
 import { FullScreenLoadingSpinner } from '@/components/LoadingSpinner'
 
 const Translations = {
@@ -21,7 +20,6 @@ export const LocationDetailScreen = ({
   navigation,
 }: NativeStackScreenProps<StackParamList, ScreenRoutes.WeatherLocation>) => {
   const { data, isLoading } = useLocationCurrentWeather(route.params.location)
-  console.log('🚀 ~ data:', data)
 
   useEffect(() => {
     navigation.setOptions({ title: data?.name || 'Weather' })

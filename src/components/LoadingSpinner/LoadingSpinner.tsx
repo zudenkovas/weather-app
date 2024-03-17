@@ -3,11 +3,12 @@ import { ActivityIndicator, StyleSheet, View } from 'react-native'
 
 type FullScreenLoadingSpinnerProps = PropsWithChildren<{
   isLoading?: boolean
+  testID?: string
 }>
 
-export const FullScreenLoadingSpinner = ({ isLoading, children }: FullScreenLoadingSpinnerProps) => {
+export const FullScreenLoadingSpinner = ({ isLoading, children, testID }: FullScreenLoadingSpinnerProps) => {
   return isLoading ? (
-    <View style={styles.container}>
+    <View style={styles.container} testID={testID}>
       <ActivityIndicator />
     </View>
   ) : (
