@@ -29,10 +29,10 @@ export const LocationDetailScreen = ({
     <FullScreenLoadingSpinner isLoading={isLoading}>
       <View style={styles.container}>
         <View style={styles.topContainer}>
-          <Text style={styles.weatherDescription}>{data.weather[0].description}</Text>
-          <Text style={styles.temperature}>{formatTemperature(data.main.temp)}</Text>
+          <Text style={styles.weatherDescription}>{data?.weather[0].description}</Text>
+          <Text style={styles.temperature}>{formatTemperature(data?.main.temp)}</Text>
           <Text style={styles.feelsLikeTemperature}>
-            {Translations.feelsLike} {formatTemperature(data.main.feels_like)}
+            {Translations.feelsLike} {formatTemperature(data?.main.feels_like)}
           </Text>
         </View>
 
@@ -40,24 +40,24 @@ export const LocationDetailScreen = ({
           <View style={styles.additionalInfoRow}>
             <DataDetail
               title={Translations.sunrise}
-              value={unixTimestampToDateTime(data.sys.sunrise + data.timezone)}
+              value={unixTimestampToDateTime(data?.sys.sunrise ?? 0 + (data?.timezone ?? 0))}
               style={styles.additionalInfoItem}
             />
             <DataDetail
               title={Translations.sunset}
-              value={unixTimestampToDateTime(data.sys.sunset + data.timezone)}
+              value={unixTimestampToDateTime(data?.sys.sunset ?? 0 + (data?.timezone ?? 0))}
               style={styles.additionalInfoItem}
             />
           </View>
           <View style={styles.additionalInfoRow}>
             <DataDetail
               title={Translations.windSpeed}
-              value={formatWindSpeed(data.wind.speed)}
+              value={formatWindSpeed(data?.wind.speed)}
               style={styles.additionalInfoItem}
             />
             <DataDetail
               title={Translations.humidity}
-              value={formatHumidity(data.main.humidity)}
+              value={formatHumidity(data?.main.humidity)}
               style={styles.additionalInfoItem}
             />
           </View>

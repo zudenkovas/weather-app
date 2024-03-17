@@ -1,6 +1,7 @@
 import { PropsWithChildren, createContext, useEffect, useMemo, useState } from 'react'
 import * as Location from 'expo-location'
 import { GeoLocationContextState } from './types'
+import { GeoLocation } from '@/domain/types'
 
 export const GeoLocationContext = createContext<GeoLocationContextState>({
   isLoading: false,
@@ -8,7 +9,7 @@ export const GeoLocationContext = createContext<GeoLocationContextState>({
 })
 
 export const GeoLocationProvider = ({ children }: PropsWithChildren) => {
-  const [location, setLocation] = useState({ lat: undefined, lon: undefined })
+  const [location, setLocation] = useState<GeoLocation>({ lat: undefined, lon: undefined })
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
