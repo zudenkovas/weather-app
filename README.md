@@ -1,6 +1,6 @@
 ## About
 
-This is a simple React-Native application, built using Typescript, EXPO, TanStack Query, Axios and React API's.
+This is a simple React-Native application, built using Typescript, EXPO, TanStack Query, Axios and React API's. Application is displaying weather data based on device's location. It is using [OpenWeatherMap](https://openweathermap.org/current) API to fetch weather data.
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ npm  install
 To run app on ExpoGo app on physical device:
 
 - Run `npm start` inside the project root
-- Scan QR code with ExpoGo app inside the terminal
+- Scan QR code with ExpoGo app inside the terminal (remember that your device should be connected to the same network as your development machine)
 
 To run app on Android:
 
