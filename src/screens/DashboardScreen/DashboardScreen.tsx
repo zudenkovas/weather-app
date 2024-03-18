@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native'
-import { useGeoLocation } from '@/context/geoLocation/useGeoLocation'
+import { useGeoLocation } from '@/context/geoLocation'
 import { WeatherCard } from '@/components/WeatherCard'
-import { GeoLocation } from '@/domain/types'
+import { GeoLocation } from '@/domain'
 import { ScreenRoutes, StackParamList } from '@/navigation'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
@@ -17,17 +17,25 @@ const locations = {
 }
 
 export const DashboardScreen = ({ navigation }: NativeStackScreenProps<StackParamList, ScreenRoutes.Dashboard>) => {
-  const { location } = useGeoLocation()
+  const { location, requestLocationPermission } = useGeoLocation()
 
-  const handlePress = (location: GeoLocation) => {
+  const navigateToWeatherLocation = (location: GeoLocation) => {
     navigation.navigate(ScreenRoutes.WeatherLocation, { location })
+  }
+
+  const handleCurrentLocationPress = (location: GeoLocation) => {
+    if (location.lat && location.lon) {
+      navigateToWeatherLocation(location)
+    } else {
+      requestLocationPermission()
+    }
   }
 
   return (
     <View style={styles.wrapper}>
-      <WeatherCard location={location} isCurrent onPress={handlePress} />
-      <WeatherCard location={locations.berlin} onPress={handlePress} />
-      <WeatherCard location={locations.london} onPress={handlePress} />
+      <WeatherCard location={location} isCurrent onPress={handleCurrentLocationPress} />
+      <WeatherCard location={locations.berlin} onPress={navigateToWeatherLocation} />
+      <WeatherCard location={locations.london} onPress={navigateToWeatherLocation} />
     </View>
   )
 }
