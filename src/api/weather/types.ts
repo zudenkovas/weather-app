@@ -1,4 +1,4 @@
-import { GeoLocation, LocationCurrentWeatherData } from '@/domain/types'
+import { GeoLocation, LocationCurrentWeatherData } from '@/domain'
 
 export type GetLocationCurrentWeatherArgs = GeoLocation
 

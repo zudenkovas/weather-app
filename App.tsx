@@ -1,11 +1,10 @@
-import { StatusBar } from 'expo-status-bar'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { StyleSheet, Text, SafeAreaView } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { ScreenRoutes, Stack } from './src/navigation'
 import { DashboardScreen } from './src/screens/DashboardScreen'
 import { LocationDetailScreen } from './src/screens/LocationDetailScreen'
-import { GeoLocationProvider } from './src/context/geoLocation/GeoLocationProvider'
+import { GeoLocationProvider } from './src/context/geoLocation'
 
 const queryClient = new QueryClient()
 

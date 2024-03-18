@@ -1,4 +1,4 @@
-import { GeoLocation } from '@/domain/types'
+import { GeoLocation } from '@/domain'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 export const Stack = createNativeStackNavigator<StackParamList>()

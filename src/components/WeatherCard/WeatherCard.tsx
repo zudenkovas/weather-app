@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import { GeoLocation } from '@/domain/types'
+import { GeoLocation } from '@/domain'
 import { useLocationCurrentWeather } from '@/api/weather'
 import { formatTemperature } from '@/utils'
 import { LoadingSkeleton } from '../LoadingSkeleton/LoadingSkeleton'

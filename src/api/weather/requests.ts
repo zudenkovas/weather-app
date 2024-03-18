@@ -1,4 +1,4 @@
-import { LocationCurrentWeatherData } from '@/domain/types'
+import { LocationCurrentWeatherData } from '@/domain'
 import { getReq } from '../commons'
 import { GetLocationCurrentWeatherArgs } from './types'
 
